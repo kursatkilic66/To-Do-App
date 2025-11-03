@@ -1,0 +1,69 @@
+.register-form-container{
+    
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.register-form{
+    
+    display: flex
+;
+    flex-direction: column;
+    width: 90%;
+    max-width: 400px;
+    background-color: #f9f4ef;
+    margin: 40px auto;
+    gap: 15px;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.registerNameLabel, .registerSurnameLabel, .registerEmailLabel, .registerPasswordLabel{
+    font-size: larger;
+    font-family: cursive;
+    font-style: italic;
+    margin: 5px;
+}
+
+#nameRegister, #surnameRegister, #emailRegister, #passwordRegister{
+    
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.registerButton{
+    
+    padding: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+    transition: background-color,margin-top 0.3s ease;
+    
+    
+    
+}
+
+.registerButton:hover{
+    background-color: #e7b97e;
+     
+}
+
+
+
+

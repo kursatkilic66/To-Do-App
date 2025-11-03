@@ -1,0 +1,78 @@
+.task-container{
+    margin: 10px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: antiquewhite;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    min-width: fit-content;
+    max-width: 300px;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.task-duedate{
+    display: flex
+;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: x-large;
+
+}
+.task-title{
+    display: flex
+;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: xx-large;
+
+}
+.task-description{
+    display: flex
+;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+
+}
+.task-icons{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    flex-direction: row;
+    justify-content: flex-end;
+
+}
+.icon-check{
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    
+    
+
+}
+.icon-check:hover{
+    opacity: 0.5;
+    
+}
+.icon-delete{
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.icon-delete:hover{
+    opacity: 0.5;
+}
+.icon-close{
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.icon-close:hover{
+    opacity: 0.5;
+}

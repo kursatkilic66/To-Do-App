@@ -1,0 +1,36 @@
+.welcome_container{
+    background-color: transparent;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: anchor-center;
+}
+.header_title{
+    color: rgb(79, 52, 14);
+    font-size: xx-large;
+    font-weight: bold;
+    display: inline-block;
+}
+.header2_title{
+    color: rgb(107, 70, 18);
+    display: inline-block;
+}
+.welcome_addButton{
+    display: inline-block;
+    border: 2px solid rgb(79, 52, 14);
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 10px;
+}
+.welcome_task_container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+}
