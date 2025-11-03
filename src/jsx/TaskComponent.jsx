@@ -5,6 +5,16 @@ import {
   handleDoneTask,
 } from "../redux/slices/tasksSlice";
 function TaskComponent({ task }) {
+  const date = new Date(task.dueDate);
+
+  // padStart(2, '0') -> '5' ise '05' yapar, '12' ise '12' bırakır
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // DİKKAT: getMonth() 0'dan başlar (Ocak=0)
+  const year = date.getFullYear();
+
+  // DD/MM/YYYY formatı
+  const formattedDate = `${day}/${month}/${year}`;
+
   const dispatch = useDispatch();
   const handleCheck = () => {
     dispatch(handleDoneTask(task.id));
@@ -20,7 +30,7 @@ function TaskComponent({ task }) {
         className="task-duedate"
         style={{ textDecoration: task.done ? "line-through" : "none" }}
       >
-        {task.dueDate}
+        {formattedDate}
       </div>
       <div
         className="task-title"

@@ -3,7 +3,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const BASE_URL = "http://localhost:8080/rest/api/users/";
-const AUTH_BASE_URL = "http://localhost:8080/auth/";
+//const AUTH_BASE_URL = "http://localhost:8080/auth/";
+const AUTH_BASE_URL = `${import.meta.env.VITE_API_URL}/auth`;
 const PRODUCT_URL = import.meta.env.VITE_API_URL;
 //const BASE_URL = `${PRODUCT_URL}/rest/api/users/`;
 

@@ -6,10 +6,10 @@ const initialState = {
   loading: "idle",
   error: null,
 };
-const BASE_URL = "http://localhost:8080/rest/api/tasks/";
+//const BASE_URL = "http://localhost:8080/rest/api/tasks/";
 
 const PRODUCT_URL = import.meta.env.VITE_API_URL;
-//const BASE_URL = `${PRODUCT_URL}/rest/api/tasks/`;
+const BASE_URL = `${PRODUCT_URL}/rest/api/tasks/`;
 
 export const getMyTasks = createAsyncThunk(
   "tasks/getUsersTasks",
