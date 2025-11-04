@@ -2,16 +2,16 @@ body {
     background-image: url("../assets/entryBackground.png");
     background-size:cover;
     background-repeat: no-repeat;
-    background-position: center;
+    /* background-position: center; */
     height: 100vh;
     margin: 0;
     
 }
  .login-container {
   background-color: #f9f4ef;
-    width: 100%;
+    /* width: 100%; */
     max-width: 500px;
-    min-height: 300px;
+    /* min-height: 300px; */
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 40px auto;
