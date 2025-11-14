@@ -14,6 +14,8 @@ function TaskAddForm({ onSubmit, onClose }) {
     setDescription("");
   };
 
+  const today = new Date().toISOString().split("T")[0];
+
   return (
     <div className="taskFormOverlay">
       <form className="taskForm" onSubmit={handleSubmit}>
@@ -40,6 +42,7 @@ function TaskAddForm({ onSubmit, onClose }) {
           required
           value={dueDate}
           onChange={(e) => setDueDate(e.target.value)}
+          min={today}
         />
 
         <label for="description" className="descriptionLabel">
