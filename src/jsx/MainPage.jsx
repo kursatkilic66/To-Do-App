@@ -21,7 +21,10 @@ function MainPage() {
   };
 
   const [showForm, setShowForm] = useState(false);
-  const tasksSelector = useSelector((state) => state.tasksSlice.tasks);
+  //const tasksSelector = useSelector((state) => state.tasksSlice.tasks);
+  const { tasks: tasksSelector, loading } = useSelector(
+    (state) => state.tasksSlice
+  );
   const loggedUserIdSelector = useSelector(
     (state) => state.usersSlice.loggedUserId
   );
