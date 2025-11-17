@@ -17,11 +17,10 @@ function App() {
   }, []);
 
   return (
-    <MainPage />
-    // <Routes>
-    //   <Route path="/" element={<GreetingPage />} />
-    //   <Route path="/HomePage" element={<MainPage />} />
-    // </Routes>
+    <Routes>
+      <Route path="/" element={<GreetingPage />} />
+      <Route path="/HomePage" element={<MainPage />} />
+    </Routes>
   );
 }
 
