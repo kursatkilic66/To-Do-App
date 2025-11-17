@@ -7,7 +7,7 @@ import LogoutButton from "./LogoutButton";
 
 function App() {
   useEffect(() => {
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("token");
     if (token) {
       // 2. HATA DÜZELTİLDİ: Yazım hatası (defaults)
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
