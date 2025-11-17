@@ -207,7 +207,7 @@ export const usersSlice = createSlice({
           email: action.payload.email,
         };
         state.isLoggedIn = true;
-        console.log("calistiloginuserfulfilled", (id, name, surname, email));
+        //console.log("calistiloginuserfulfilled", (id, name, surname, email));
         //localStorage.setItem("token", action.payload.token);
         state.error = null;
       })
