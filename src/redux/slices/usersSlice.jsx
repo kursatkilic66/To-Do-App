@@ -104,24 +104,54 @@ export const getAllUsersFromDatabase = createAsyncThunk(
   }
 );
 
+export const getMe = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(`${AUTH_BASE_URL}/profile`, config);
+  return response.data;
+};
+
+export const getMeThunk = createAsyncThunk(
+  "auth/getMe",
+  async (_, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        return rejectWithValue("No token");
+      }
+
+      const userData = await getMe(token);
+
+      return { user: userData, token: token };
+    } catch (error) {
+      const message = error.response?.data?.message || error.message;
+      return rejectWithValue(message);
+    }
+  }
+);
+
 export const usersSlice = createSlice({
   name: "usersSlice",
   initialState: {
     currentUser: null,
-    isLoggedIn: localStorage.getItem("token") ? true : false,
-    token: localStorage.getItem("token") || null,
+    isLoggedIn: false,
+    token: null,
     loading: "idle",
     error: null,
     users: [],
   },
   reducers: {
-    logout: (state) => {
-      localStorage.removeItem("token");
-      state.token = null;
-      state.currentUser = null;
-      state.isLoggedIn = false;
-      state.error = null;
-    },
+    // logout: (state) => {
+    //   localStorage.removeItem("token");
+    //   state.token = null;
+    //   state.currentUser = null;
+    //   state.isLoggedIn = false;
+    //   state.error = null;
+    // },
     setUser: (state, action) => {
       state.users.push(action.payload);
     },
@@ -131,6 +161,24 @@ export const usersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(getMeThunk.pending, (state) => {
+        state.loading = "loading";
+      })
+      .addCase(getMeThunk.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+        state.isLoggedIn = true;
+        state.currentUser = action.payload.user;
+        state.token = action.payload.token;
+      })
+      .addCase(getMeThunk.rejected, (state, action) => {
+        // BAŞARISIZ: Token geçersiz, süresi dolmuş veya yok
+        state.loading = "failed";
+        state.isLoggedIn = false;
+        state.currentUser = null;
+        state.token = null;
+        // ❗ Geçersiz token'ı localStorage'dan temizle!
+        localStorage.removeItem("token");
+      })
 
       .addCase(registerUser.pending, (state) => {
         state.loading = "loading";
