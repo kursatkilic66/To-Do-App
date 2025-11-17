@@ -8,14 +8,22 @@ import GreetingPage from "./GreetingPage.jsx";
 import MainPage from "./MainPage.jsx";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import LogoutButton from "./LogoutButton.jsx";
+import App from "./App.jsx";
+import React from "react";
 
 createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<GreetingPage />} />
-        <Route path="/HomePage" element={<MainPage />} />
-      </Routes>
-    </BrowserRouter>
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+        {/* <Routes>
+          <LogoutButton></LogoutButton>
+          <Route path="/" element={<GreetingPage />} />
+          <Route path="/HomePage" element={<MainPage />} />
+        </Routes> */}
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
 );

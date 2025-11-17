@@ -18,7 +18,22 @@
     color: rgb(107, 70, 18);
     display: inline-block;
 }
+.welcome-logout-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+}
 .welcome_addButton{
+    display: inline-block;
+    border: 2px solid rgb(79, 52, 14);
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 10px;
+}
+.logout-button{
     display: inline-block;
     border: 2px solid rgb(79, 52, 14);
     cursor: pointer;

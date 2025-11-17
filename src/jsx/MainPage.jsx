@@ -3,12 +3,21 @@ import TaskAddForm from "./TaskAddForm";
 import TaskComponent from "./TaskComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { addTaskToDatabase, getMyTasks } from "../redux/slices/tasksSlice";
+import { logoutUser } from "../redux/slices/usersSlice";
+import LogoutButton from "./LogoutButton";
+import { useNavigate } from "react-router-dom";
 
 function MainPage() {
+  const navigator = useNavigate();
   const handleAddTask = (task) => {
     console.log("Yeni görev:", task);
     dispatch(addTaskToDatabase(task));
     setShowForm(false);
+  };
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    navigator("/");
   };
 
   const [showForm, setShowForm] = useState(false);
@@ -33,9 +42,12 @@ function MainPage() {
 
       <h2 className="header2_title">Günlük görevlerinizi organize edin</h2>
 
-      <div>
+      <div className="welcome-logout-container">
         <h2 className="welcome_addButton" onClick={() => setShowForm(true)}>
           Yeni Görev Ekle
+        </h2>
+        <h2 className="logout-button" onClick={() => handleLogout()}>
+          Çıkış Yap
         </h2>
       </div>
       {showForm && (

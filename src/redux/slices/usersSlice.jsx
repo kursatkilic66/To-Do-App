@@ -20,11 +20,25 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+export const logoutUser = createAsyncThunk(
+  "auth/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      localStorage.removeItem("token");
+      return true;
+    } catch (error) {
+      return rejectWithValue(error.toString)();
+    }
+  }
+);
+
 export const loginUser = createAsyncThunk(
   "auth/login",
   async (loginData, { rejectWithValue }) => {
     try {
       const response = await axios.post(`${AUTH_BASE_URL}/login`, loginData);
+      const token = response.data.token;
+      localStorage.setItem("token", token);
 
       return response.data;
     } catch (error) {
@@ -144,7 +158,7 @@ export const usersSlice = createSlice({
           email: action.payload.email,
         };
         state.isLoggedIn = true;
-        localStorage.setItem("token", action.payload.token);
+        //localStorage.setItem("token", action.payload.token);
         state.error = null;
       })
       .addCase(loginUser.rejected, (state, action) => {
@@ -153,9 +167,18 @@ export const usersSlice = createSlice({
         state.currentUser = null;
         state.token = null;
         state.isLoggedIn = false;
-        localStorage.removeItem("token");
+        //localStorage.removeItem("token");
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.token = null;
+        state.currentUser = null;
+        state.isLoggedIn = false;
+        state.error = null;
+        state.loading = "succeeded";
       });
   },
 });
-export const { setUser, setLoggedUserId, logout } = usersSlice.actions;
+export const { setUser, setLoggedUserId } = usersSlice.actions;
+//export const { setUser, setLoggedUserId, logout } = usersSlice.actions;
+
 export default usersSlice.reducer;
