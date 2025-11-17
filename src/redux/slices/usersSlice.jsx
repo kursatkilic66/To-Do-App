@@ -169,7 +169,7 @@ export const usersSlice = createSlice({
         state.isLoggedIn = true;
         state.currentUser = action.payload.user;
         state.token = action.payload.token;
-        console.log("calistiloginuserfulfilled", currentUser.name);
+        //console.log("calistiloginuserfulfilled", currentUser.name);
       })
       .addCase(getMeThunk.rejected, (state, action) => {
         // BAŞARISIZ: Token geçersiz, süresi dolmuş veya yok
