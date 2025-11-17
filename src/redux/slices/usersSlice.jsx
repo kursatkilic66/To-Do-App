@@ -105,7 +105,6 @@ export const getAllUsersFromDatabase = createAsyncThunk(
 );
 
 export const getMe = async (token) => {
-  console.log("Token: ", token);
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -170,6 +169,7 @@ export const usersSlice = createSlice({
         state.isLoggedIn = true;
         state.currentUser = action.payload.user;
         state.token = action.payload.token;
+        console.log("calistiloginuserfulfilled", currentUser.name);
       })
       .addCase(getMeThunk.rejected, (state, action) => {
         // BAŞARISIZ: Token geçersiz, süresi dolmuş veya yok
@@ -207,6 +207,7 @@ export const usersSlice = createSlice({
           email: action.payload.email,
         };
         state.isLoggedIn = true;
+        console.log("calistiloginuserfulfilled", (id, name, surname, email));
         //localStorage.setItem("token", action.payload.token);
         state.error = null;
       })
