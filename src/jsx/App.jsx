@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import LogoutButton from "./LogoutButton";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { getMe } from "../redux/slices/usersSlice";
+import { getMe, getMeThunk } from "../redux/slices/usersSlice";
 
 function ProtectedRoute({ children }) {
   const { isLoggedIn } = useSelector((state) => state.usersSlice);
@@ -45,7 +45,7 @@ function App() {
   //     return <div>Yükleniyor...</div>; // Veya daha güzel bir loading spinner
   //   }
   useEffect(() => {
-    dispatch(getMe);
+    dispatch(getMeThunk());
   }, []);
 
   return (

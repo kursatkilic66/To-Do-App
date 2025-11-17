@@ -105,6 +105,7 @@ export const getAllUsersFromDatabase = createAsyncThunk(
 );
 
 export const getMe = async (token) => {
+  console.log("Token: ", token);
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
