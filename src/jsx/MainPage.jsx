@@ -34,10 +34,10 @@ function MainPage() {
     dispatch(getMyTasks());
   }, [dispatch]);
 
-  if (loading === "loading" || !Array.isArray(tasksSelector)) {
-    console.log("yükleniyor");
-    return <div>Görevler Yükleniyor...</div>;
-  }
+  // if (loading === "loading" || !Array.isArray(tasksSelector)) {
+  //   console.log("yükleniyor");
+  //   return <div>Görevler Yükleniyor...</div>;
+  // }
 
   return (
     <div className="welcome_container">
