@@ -3,6 +3,16 @@ import toggleReducer from "./slices/greetingPageSlice.jsx";
 import taskReducer from "./slices/tasksSlice.jsx";
 import usersReducer from "./slices/usersSlice.jsx";
 
+const usersInitialState = {
+  currentUser: null,
+  isLoggedIn: false,
+  token: null,
+  loading: "idle",
+  error: null,
+  users: [],
+  loggedUserId: null, // Bu da muhtemelen eksikti
+};
+
 function loadStateFromStorage() {
   try {
     const token = localStorage.getItem("token");
@@ -12,12 +22,19 @@ function loadStateFromStorage() {
 
     return {
       usersSlice: {
-        token: token,
+        ...usersInitialState, // 👈 Önce tüm varsayılanları koy
+        token: token, // 👈 Sonra token ile ilgili olanları ez
         isLoggedIn: true,
-        currentUser: null,
         loading: "succeeded",
-        error: null,
       },
+      // usersSlice: {
+      //   token: token,
+      //   isLoggedIn: true,
+      //   currentUser: null,
+      //   loading: "succeeded",
+      //   error: null,
+      //   users: [],
+      // },
     };
   } catch (error) {
     return undefined;

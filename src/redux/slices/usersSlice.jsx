@@ -143,6 +143,7 @@ export const usersSlice = createSlice({
     loading: "idle",
     error: null,
     users: [],
+    loggedUserId: null,
   },
   reducers: {
     // logout: (state) => {
